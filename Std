@@ -1,0 +1,44 @@
+# Task
+package Qsort;
+
+import java.util.Scanner;
+
+/**
+ * Created by Natalia on 13.04.2015.
+ */
+public class Std {
+
+    public static double[] readIn() {
+        String arrayS;
+        String result;
+        double arrayD;
+        double[] resultArray = null;
+        Scanner scaner = new Scanner(System.in);
+        result = scaner.next();
+
+        if (((" ").equals(scaner))) {
+
+            double[] doubleArray = new double[arrayS.length];
+            int temp = 0;
+
+            for (int i = 0; i < doubleArray.length; i++) {
+
+                try {
+                    arrayD = Double.parseDouble(arrayS[i]);
+                    doubleArray[temp] = arrayD;
+                    temp++;
+                    resultArray = new double[temp];
+                    resultArray[i] = doubleArray[i];
+                } catch (Exception e) {
+                    System.err.println("Error in " + (i + 1) + "elements");
+                }
+            }
+        }
+        return resultArray;
+
+    }
+
+    public static void writeOut(double[] resultArray) {
+        for (double aResultArray : resultArray){ System.out.println(aResultArray + " ");}
+    }
+}
