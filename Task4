@@ -1,4 +1,4 @@
-# Taskpackage Qsort;
+package Qsort;
 
 import java.util.Scanner;
 
@@ -11,23 +11,30 @@ public class Sort {
     private static double arrayD;
 
     public static void main(String[] args) throws Exception {
-        String fileName = args[1];
+        double[] resultArray;
+        String fileName = args[0];
         String fileName1 = args[2];
+
         switch (fileName){
             case "Std":
                 Std std = new Std();
                 std.readIn();
+                break;
             case "XML":
                 XMLFile xmlFile = new XMLFile();
                 xmlFile.readFromXML(fileName);
+                break;
             case "CVS":
                 ReadFromFile readFromFile = new ReadFromFile();
                 readFromFile.read(fileName, ",");
+                break;
             case "File":
                 readFromFile = new ReadFromFile();
                 readFromFile.read(fileName, "/n");
+                break;
 
         }
+        sortByMethod(args[1],resultArray);
         switch (fileName1){
             case "Std":
                 Std std = new Std();
@@ -104,3 +111,4 @@ public class Sort {
 
 
 }
+
