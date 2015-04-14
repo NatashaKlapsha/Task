@@ -1,0 +1,46 @@
+package Qsort
+import java.util.ArrayList;
+
+/**;
+
+ import org.simpleframework.xml.Element;
+ import org.simpleframework.xml.ElementList;
+ import org.simpleframework.xml.Root;
+
+
+ * Created by Natalia on 14.04.2015.
+ */
+@Root(name = "root" )
+public class Example {
+
+    @Element(name = "values")
+    private ValueList value;
+
+    public Example() {
+        super();
+    }
+
+    public Example(ArrayList<Double> list) {
+        value = new ValueList(list);
+    }
+
+    public ArrayList<Double> getValues() {
+        return value.getValues();
+    }
+}
+class ValueList {
+
+    @ElementList(entry = "value", required = true, inline = true)
+    private ArrayList<Double> values;
+
+    public ValueList() {
+    }
+
+    public ValueList(ArrayList<Double> values) {
+        this.values = values;
+    }
+
+    public ArrayList<Double> getValues() {
+        return values;
+    }
+}
