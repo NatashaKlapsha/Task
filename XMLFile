@@ -1,0 +1,44 @@
+# Task
+package Qsort;
+
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
+import java.io.File;
+import java.util.ArrayList;
+
+public class XMLFile {
+    private double[] value;
+
+    public double[] getValue() {
+        return value;
+    }
+
+    public ArrayList<Double> readFromXML(final String name) {
+
+        Serializer serializer = new Persister();
+        try {
+            return serializer.read(Example.class, new File(name)).getValues();
+        } catch (Exception e) {
+            System.err.println("Can not deserialize file this name " + name);
+        }
+        return null;
+    }
+
+
+    public void writeToXML(double[] arrayList, final String name) {
+
+        ArrayList<Double> dList = new ArrayList<>();
+
+        for (double tmp : arrayList) {
+            dList.add(tmp);
+        }
+        Serializer serializer = new Persister();
+        try {
+            serializer.write(new Example(dList), new File(name));
+        } catch (Exception e) {
+            System.err.println("Can not deserialize file this name " + name);
+        }
+    }
+}
+
