@@ -1,0 +1,56 @@
+# Task
+package Qsort;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+/**
+ * Created by Natalia on 12.04.2015.
+ */
+
+public class ReadFromFile {
+
+
+    public static double[] read(String csvFile, String splitSymbol) {
+
+        BufferedReader br = null;
+        int temp = 0;
+
+        String[] myArray;
+        double arrayDouble;
+        String line = "";
+        try {
+
+            br = new BufferedReader(new FileReader(new File(csvFile).getAbsoluteFile()));
+            line = br.readLine();
+            myArray = line.split(splitSymbol);
+            double[] doubleArray = new double[myArray.length];
+
+            for (String s : myArray) {
+
+                arrayDouble = Double.parseDouble(s);
+                doubleArray[temp] = arrayDouble;
+                temp++;
+            }
+
+            return doubleArray;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        System.out.println("Done");
+        return new double[0] ;
+    }
+
+}
